@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FastAPI CRUD App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', path='/css/styles.css') }}">
+</head>
+<body>
+    <header class="text-center py-4 mb-5">
+        <div class="container">
+            <h1 class="display-4 fw-bold">FastAPI CRUD Application</h1>
+            <p class="lead mb-0">Create, Read, Update, and Delete Items</p>
+        </div>
+    </header>
+
+    <main class="container mb-5">
+        <div class="row g-4">
+            <!-- Form section -->
+            <div class="col-lg-4 col-md-5">
+                <div class="card h-100">
+                    <div class="card-header d-flex align-items-center">
+                        <i class="bi bi-plus-circle me-2"></i>
+                        <h2 class="h5 mb-0" id="form-title">Add New Item</h2>
+                    </div>
+                    <div class="card-body">
+                        <form id="item-form">
+                            <input type="hidden" id="item-id">
+                            <div class="mb-4">
+                                <label for="title" class="form-label">Title</label>
+                                <input type="text" class="form-control" id="title" placeholder="Enter item title" required>
+                            </div>
+                            <div class="mb-4">
+                                <label for="description" class="form-label">Description</label>
+                                <textarea class="form-control" id="description" rows="4" placeholder="Enter item description"></textarea>
+                            </div>
+                            <div class="mb-4 form-check">
+                                <input type="checkbox" class="form-check-input" id="completed">
+                                <label class="form-check-label" for="completed">Mark as completed</label>
+                            </div>
+                            <div class="d-grid gap-2 d-md-flex justify-content-md-between">
+                                <button type="submit" class="btn btn-primary px-4" id="submit-btn">
+                                    <i class="bi bi-save me-2"></i>Save
+                                </button>
+                                <button type="button" class="btn btn-secondary px-4" id="cancel-btn" style="display: none;">
+                                    <i class="bi bi-x-circle me-2"></i>Cancel
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Items list section -->
+            <div class="col-lg-8 col-md-7">
+                <div class="card h-100">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div class="d-flex align-items-center">
+                            <i class="bi bi-list-ul me-2"></i>
+                            <h2 class="h5 mb-0">Items List</h2>
+                        </div>
+                        <div class="spinner-border text-light spinner-border-sm" role="status" id="loading-spinner">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th scope="col" width="5%">ID</th>
+                                        <th scope="col" width="25%">Title</th>
+                                        <th scope="col" width="40%">Description</th>
+                                        <th scope="col" width="15%">Status</th>
+                                        <th scope="col" width="15%" class="text-center">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="items-table-body">
+                                    <!-- Items will be loaded here -->
+                                </tbody>
+                            </table>
+                        </div>
+                        <div id="no-items-message" style="display: none;">
+                            <i class="bi bi-inbox text-muted d-block text-center" style="font-size: 3rem;"></i>
+                            <p class="text-center mt-3">No items found. Create a new item to get started.</p>
+                            <div class="text-center">
+                                <button class="btn btn-primary" id="create-first-item-btn">
+                                    <i class="bi bi-plus-circle me-2"></i>Create First Item
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Toast notifications -->
+    <div class="toast-container position-fixed top-0 end-0 p-3">
+        <div id="toast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="bi me-2" id="toast-icon"></i>
+                <strong class="me-auto" id="toast-title">Notification</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body" id="toast-message">
+                <!-- Toast message will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <footer class="py-4">
+        <div class="container">
+            <p>FastAPI CRUD Application &copy; 2025 | Built with <i class="bi bi-heart-fill text-danger"></i> using FastAPI & SQLite</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ url_for('static', path='/js/script.js') }}"></script>
+</body>
+</html>

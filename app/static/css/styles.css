@@ -1,0 +1,97 @@
+/* Custom styles for the CRUD application */
+
+body {
+    background-color: #f8f9fa;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+header {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border: none;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card-header {
+    font-weight: 600;
+}
+
+.btn-primary {
+    background-color: #0d6efd;
+    border-color: #0d6efd;
+}
+
+.btn-primary:hover {
+    background-color: #0b5ed7;
+    border-color: #0a58ca;
+}
+
+.table th {
+    background-color: #f1f3f5;
+}
+
+.badge-status {
+    font-size: 0.8rem;
+    padding: 0.35em 0.65em;
+}
+
+.completed-true {
+    background-color: #198754;
+}
+
+.completed-false {
+    background-color: #dc3545;
+}
+
+.action-btn {
+    transition: all 0.2s;
+}
+
+.action-btn:hover {
+    transform: scale(1.2);
+}
+
+.edit-btn {
+    color: #0d6efd;
+}
+
+.delete-btn {
+    color: #dc3545;
+}
+
+#no-items-message {
+    padding: 2rem;
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+}
+
+/* Toast customization */
+.toast-container {
+    z-index: 11;
+}
+
+.toast {
+    opacity: 1;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+}
+
+/* Animation for new/updated items */
+@keyframes highlight {
+    0% {
+        background-color: #e3f2fd;
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+.highlight-row {
+    animation: highlight 2s ease-in-out;
+}
