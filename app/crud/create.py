@@ -3,6 +3,11 @@ from app.models.item import Item
 from app.schemas.item import ItemCreate
 
 def create_item(db: Session, item: ItemCreate):
+    db_item = Item(title=item.title,description=item.description,completed=item.completed)
+    db.add(db_item)
+    db.commit()
+    db.refresh(db_item)
+    return db_item
     """
     Create a new item in the database.
     
@@ -21,5 +26,4 @@ def create_item(db: Session, item: ItemCreate):
     # 4. Refresh the item to get the generated ID
     # 5. Return the created item
     
-    # Delete the code below and implement your solution
-    raise NotImplementedError("The create_item function is not implemented yet")
+   
