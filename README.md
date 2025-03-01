@@ -1,6 +1,6 @@
 # FastAPI CRUD Application - Assignment
 
-A collaborative assignment to implement CRUD (Create, Read, Update, Delete) operations in a FastAPI application.
+A collaborative assignment to implement CRUD (Create, Read, Update, Delete) operations using SQLite in a FastAPI application.
 
 ## 📋 Project Overview
 
