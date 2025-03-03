@@ -2,6 +2,7 @@ from sqlalchemy.orm import Session
 from typing import Optional
 from app.models.item import Item
 
+
 def delete_item(db: Session, item_id: int) -> bool:
     """
     Delete an item from the database.
@@ -19,8 +20,16 @@ def delete_item(db: Session, item_id: int) -> bool:
         return False
 
 db.delete(item)
-db.commit()
-        return True 
+
+
+db.commit()                           
+returnTrue 
+
+    
+    
+    
+    
+    
     # TODO: Implement the delete_item function
     # The function should:
     # 1. Get the item with the given item_id from the database
