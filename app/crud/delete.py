@@ -14,17 +14,22 @@ def delete_item(db: Session, item_id: int) -> bool:
     Returns:
         bool: True if the item was deleted, False if the item was not found
     """
-
-    item = db.query(Item).filter(Item.id == item_id).first() 
+ 
+    item = db.query(Item).filter(Item.id == item_id).first()
+    
+   
     if not item:
         return False
 
-db.delete(item)
+   
+    db.delete(item)
 
+ 
+    db.commit()
 
-db.commit()                           
-returnTrue 
-
+  
+    return True 
+  
     
     
     
