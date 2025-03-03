@@ -14,14 +14,13 @@ def delete_item(db: Session, item_id: int) -> bool:
         bool: True if the item was deleted, False if the item was not found
     """
 
-    item = db.query(Item).filter(Item.id == item_id).first()
+    item = db.query(Item).filter(Item.id == item_id).first() 
     if not item:
         return False
 
 db.delete(item)
- db.commit()
-
-    return True
+db.commit()
+        return True 
     # TODO: Implement the delete_item function
     # The function should:
     # 1. Get the item with the given item_id from the database
