@@ -22,6 +22,8 @@ def delete_item(db: Session, item_id: int) -> bool:
     # 5. Return True to indicate successful deletion
     
     # Delete the code below and implement your solution
+    raise NotImplementedError("The create_item function is not implemented yet")
+
    item = db.query(Item).filter(Item.id == item_id).first()
 if not item:
     return False
