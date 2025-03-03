@@ -21,7 +21,7 @@ app/schemas/__pycache__/
 tests/__pycache__/
 
 # Database
-database/
+database/items.db
 *.db
 *.sqlite
 *.sqlite3
