@@ -18,7 +18,6 @@ app/crud/__pycache__/
 app/models/__pycache__/
 app/routes/__pycache__/
 app/schemas/__pycache__/
-solutions/crud/__pycache__/
 tests/__pycache__/
 
 # Database
@@ -26,9 +25,6 @@ database/
 *.db
 *.sqlite
 *.sqlite3
-
-# Solutions directory (for testing)
-solutions/
 
 # IDE specific files
 .idea/
