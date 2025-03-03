@@ -28,4 +28,5 @@ if not item:
 
 db.delete(item)
 db.commit()
+
 return True
