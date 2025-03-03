@@ -13,6 +13,15 @@ def delete_item(db: Session, item_id: int) -> bool:
     Returns:
         bool: True if the item was deleted, False if the item was not found
     """
+
+    item = db.query(Item).filter(Item.id == item_id).first()
+    if not item:
+        return False
+
+db.delete(item)
+ db.commit()
+
+    return True
     # TODO: Implement the delete_item function
     # The function should:
     # 1. Get the item with the given item_id from the database
@@ -22,13 +31,5 @@ def delete_item(db: Session, item_id: int) -> bool:
     # 5. Return True to indicate successful deletion
     
     # Delete the code below and implement your solution
-    raise NotImplementedError("The create_item function is not implemented yet")
-
-   item = db.query(Item).filter(Item.id == item_id).first()
-if not item:
-    return False
-
-db.delete(item)
-db.commit()
-
-return True
+    
+  
