@@ -2,9 +2,7 @@
 
 A simple but complete CRUD (Create, Read, Update, Delete) application built with FastAPI and SQLite.
 
-![Crud-App](crud-app.mp4)
-
-## 📋 Project Overview
+[Crud-App](https://github.com/user-attachments/assets/64c6521b-9e48-410f-a96b-46bf37bdd279)
 
 This project demonstrates how to build a task management application using FastAPI and SQLite. The application allows users to:
 - Create new tasks
