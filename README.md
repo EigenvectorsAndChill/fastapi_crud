@@ -1,10 +1,10 @@
-# FastAPI CRUD Application - Assignment
+# FastAPI CRUD Application
 
-A collaborative assignment to implement CRUD (Create, Read, Update, Delete) operations using SQLite in a FastAPI application.
+A simple but complete CRUD (Create, Read, Update, Delete) application built with FastAPI and SQLite.
 
 ## 📋 Project Overview
 
-This project is a simple task management application built with FastAPI and SQLite. The application allows users to:
+This project demonstrates how to build a task management application using FastAPI and SQLite. The application allows users to:
 - Create new tasks
 - View all tasks or a specific task
 - Update existing tasks
@@ -50,10 +50,7 @@ flowchart TD
     API -->|"delete_item()"| DB
     DB -->|"Confirm deletion"| API
     API -->|"Return 204 No Content"| Client
-    
 ```
-
-The project structure is set up to facilitate collaborative development, where four developers will each implement one of the CRUD operations.
 
 ## 🚀 Getting Started
 
@@ -68,7 +65,7 @@ The project structure is set up to facilitate collaborative development, where f
 
 ```bash
 git clone https://github.com/EigenvectorsAndChill/fastapi_crud.git
-cd fastapi-crud
+cd fastapi_crud
 ```
 
 2. **Create a virtual environment**
@@ -84,130 +81,38 @@ source .venv/bin/activate  # On Windows, use: .venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-4. **Run the application (skip this for now)**
+4. **Run the application**
 
 ```bash
 uvicorn app.main:app --reload
 ```
 
-5. **Access the application (skip this for now)**
+5. **Access the application**
 
 - Web interface: http://127.0.0.1:8000/
 - API documentation: http://127.0.0.1:8000/docs
 
-## 📝 Assignment Instructions
-
-This is a collaborative assignment where each team member is responsible for implementing one of the CRUD operations.
-
-### Developer Workflow
-
-1. **Fork the repository** to your GitHub account
-   - Click the "Fork" button at the top right of the repository page
-   - This creates a copy of the repository under your account
-
-2. **Clone your fork** to your local machine
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/fastapi_crud.git
-   cd fastapi-crud
-   ```
-
-3. **Implement your assigned operation** in the corresponding file:
-   - Create: `app/crud/create.py`
-   - Read: `app/crud/read.py`
-   - Update: `app/crud/update.py`
-   - Delete: `app/crud/delete.py`
-
-4. **Run the tests** for your implementation:
-   ```bash
-   python -m tests.test_create  # For the Create operation
-   python -m tests.test_read    # For the Read operation
-   python -m tests.test_update  # For the Update operation
-   python -m tests.test_delete  # For the Delete operation
-   ```
-
-5. **Verify ALL tests pass** before proceeding with your pull request
-
-6. **Submit a pull request** with your implementation
-   - Commit your changes: `git add . && git commit -m "Implement X operation"`
-   - Push to your fork: `git push origin main`
-   - Go to the original repository and click "New Pull Request"
-   - Select "Compare across forks" and select your fork
-   - Create the pull request with a descriptive title and details about your implementation
-
-### Implementation Guidelines
-
-- **Read the TODOs and docstrings** in your assigned file carefully
-- Follow the implementation steps described in the comments
-- Do not modify files outside your assigned operation
-- Make sure your code passes all the tests
-- Use SQLAlchemy ORM for database operations
-- Follow PEP 8 style guidelines
-
-### Implementation Details
-
-#### Create Operation (`app/crud/create.py`)
-
-Your task is to implement the `create_item` function that:
-1. Takes a database session and an item schema
-2. Creates a new `Item` object using the data from the schema
-3. Adds it to the database
-4. Commits the transaction
-5. Refreshes the item to get the auto-generated ID
-6. Returns the created item
-
-#### Read Operation (`app/crud/read.py`)
-
-Your task is to implement two functions:
-1. `get_item`: Retrieves a single item by ID
-   - Returns `None` if the item doesn't exist
-2. `get_items`: Retrieves multiple items with pagination
-   - Applies offset (skip) and limit parameters
-
-#### Update Operation (`app/crud/update.py`)
-
-Your task is to implement the `update_item` function that:
-1. Takes a database session, an item ID, and new item data
-2. Retrieves the existing item by ID
-3. Updates the item's attributes with the new values
-4. Commits the changes to the database
-5. Returns the updated item (or `None` if not found)
-
-#### Delete Operation (`app/crud/delete.py`)
-
-Your task is to implement the `delete_item` function that:
-1. Takes a database session and an item ID
-2. Retrieves the item by ID
-3. Deletes the item from the database if it exists
-4. Commits the changes
-5. Returns `True` if the item was found and deleted, `False` otherwise
-
 ## 🧪 Testing
 
-Unit tests are provided for each CRUD operation. You **MUST** run the tests for your implementation and ensure they all pass before submitting your pull request.
+The project includes comprehensive tests for all CRUD operations. To run the tests:
 
 ```bash
-# Test Create operation
+# Test individual operations
 python -m tests.test_create
-
-# Test Read operation
 python -m tests.test_read
-
-# Test Update operation
 python -m tests.test_update
-
-# Test Delete operation
 python -m tests.test_delete
 
-# Test Integration (run this after implementing all operations)
+# Test all operations together
 python -m tests.test_integration
 ```
 
-## 📁 Project Structure Explained
+## 📁 Project Structure
 
 ```
 fastapi_crud/
 ├── app/                      # Main application package
-│   ├── crud/                 # CRUD operations - YOU WILL WORK HERE
+│   ├── crud/                 # CRUD operations
 │   │   ├── __init__.py       # Makes crud a proper package and exports operations
 │   │   ├── create.py         # Create operation implementation
 │   │   ├── read.py           # Read operation implementation
@@ -231,6 +136,13 @@ fastapi_crud/
 │   │   └── index.html        # Main page template
 │   ├── database.py           # Database connection setup
 │   └── main.py               # Application entry point
+├── solutions/                # Reference implementations
+│   └── crud/                 # Complete CRUD implementations
+│       ├── __init__.py
+│       ├── create.py         # Create operation solution
+│       ├── read.py           # Read operation solution
+│       ├── update.py         # Update operation solution
+│       └── delete.py         # Delete operation solution
 ├── tests/                    # Test package
 │   ├── test_create.py        # Tests for create operation
 │   ├── test_read.py          # Tests for read operations
@@ -239,16 +151,19 @@ fastapi_crud/
 │   └── test_integration.py   # Integration tests
 ├── .gitignore                # Git ignore file
 ├── requirements.txt          # Python dependencies
+├── test_solutions.sh         # Script to test solution implementations
 └── README.md                 # This file
 ```
 
-### Key Files Explained
+## 🔧 Implementation Details
 
-- **app/models/item.py**: Defines the `Item` SQLAlchemy model that maps to the database table
-- **app/schemas/item.py**: Defines the Pydantic models used for request/response validation
-- **app/routes/item.py**: Defines the API endpoints and connects them to the CRUD operations
-- **app/database.py**: Sets up the SQLAlchemy engine, session, and base class
-- **app/main.py**: Main application entry point that sets up FastAPI and includes routes
+### Key Components
+
+- **CRUD Operations**: Located in the `app/crud/` directory, these functions handle database operations using SQLAlchemy ORM
+- **Solution Directory**: The `solutions/` directory contains complete reference implementations of each CRUD operation
+- **Test Script**: The `test_solutions.sh` script allows you to run tests using the solution implementations
+
+### You can temporarily modify the `app/main.py` file to use the solution implementations instead of the app implementations.
 
 ## 🔍 API Reference
 
@@ -285,3 +200,15 @@ fastapi_crud/
 - **Delete Item**
   - `DELETE /api/items/{item_id}`
   - Path Parameters: `item_id` (integer)
+
+## 📚 Key Files Explained
+
+- **app/models/item.py**: Defines the `Item` SQLAlchemy model that maps to the database table
+- **app/schemas/item.py**: Defines the Pydantic models used for request/response validation
+- **app/routes/item.py**: Defines the API endpoints and connects them to the CRUD operations
+- **app/database.py**: Sets up the SQLAlchemy engine, session, and base class
+- **app/main.py**: Main application entry point that sets up FastAPI and includes routes
+- 
+## 🙏 Acknowledgments
+
+This project was originally developed as a collaborative assignment. Thanks to all contributors who helped implement the CRUD operations.
